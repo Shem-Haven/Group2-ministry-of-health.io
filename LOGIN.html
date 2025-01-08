@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(120deg, #3498db, #8e44ad);
+            padding: 20px;
+        }
+
+        .form-container {
+            background: #fff;
+            max-width: 400px;
+            width: 100%;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .slide-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .slide-controls button {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-controls button.active {
+            background: #3498db;
+            color: #fff;
+        }
+
+        .form-inner {
+            transition: all 0.3s ease;
+        }
+
+        .form-inner h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .field input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .field.btn input {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .field.btn input:hover {
+            background: #2980b9;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="image.png" alt="Building a Healthy Plate">
+        </div>
+
+        <!-- Slide Controls -->
+        <div class="slide-controls">
+            <button class="slidelogin active" onclick="showForm('login')">Login</button>
+            <button class="slidesignup" onclick="showForm('signup')">Signup</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="form-inner">
+            <h2>Login</h2>
+            <div class="field">
+                <label for="login-email">Email Address</label>
+                <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="field">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="field btn">
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+                Not a member? <a href="#" onclick="showForm('signup')">Signup now</a>
+            </div>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="form-inner" style="display: none;">
+            <h2>Signup</h2>
+            <div class="field">
+                <label for="signup-email">Email Address</label>
+                <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="field">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="field">
+                <label for="signup-confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <div class="field btn">
+                <input type="submit" value="Signup">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function showForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const loginBtn = document.querySelector('.slidelogin');
+            const signupBtn = document.querySelector('.slidesignup');
+
+            if (formType === 'login') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                loginBtn.classList.add('active');
+                signupBtn.classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                loginBtn.classList.remove('active');
+                signupBtn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

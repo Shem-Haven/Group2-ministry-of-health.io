@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="CSS/indexstyles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .slide-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .slide-controls button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slide-controls button:hover {
+            background: #0056b3;
+        }
+
+        .slide-controls .active {
+            background: #0056b3;
+        }
+
+        .form-inner {
+            display: none;
+        }
+
+        .form-inner.active {
+            display: block;
+        }
+
+        .field {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .field.btn input {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .field.btn input:hover {
+            background: #0056b3;
+        }
+
+        .pass-link, .signup-link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .pass-link a, .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .pass-link a:hover, .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Slide Controls -->
+        <div class="slide-controls">
+            <button class="slidelogin active" onclick="showForm('login')">Login</button>
+            <button class="slidesignup" onclick="showForm('signup')">Signup</button>
+        </div>
+
+        <!-- Login Form -->
+        <form action="loginresponse.html" method="post" id="login-form" class="form-inner active">
+            <h2>Login</h2>
+            <div class="field">
+                <label for="login-email">Email Address:</label>
+                <input type="email" id="login-email" name="email" placeholder="Email Address" required aria-label="Email">
+            </div>
+            <div class="field">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" placeholder="Password" required aria-label="Password">
+            </div>
+            <div class="field">
+                <label>
+                    <input type="checkbox" name="remember-me"> Remember Me
+                </label>
+            </div>
+            <div class="pass-link">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="field btn">
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+                Not a member? <a href="#" onclick="showForm('signup')">Signup now</a>
+            </div>
+        </form>
+
+        <!-- Signup Form -->
+        <form action="signupresponse.html" method="post" id="signup-form" class="form-inner">
+            <h2>Signup</h2>
+            <div class="field">
+                <label for="signup-email">Email Address:</label>
+                <input type="email" id="signup-email" name="email" placeholder="Email Address" required aria-label="Email">
+            </div>
+            <div class="field">
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" placeholder="Password" required aria-label="Password">
+            </div>
+            <div class="field">
+                <label for="signup-confirm-password">Confirm Password:</label>
+                <input type="password" id="signup-confirm-password" name="confirm-password" placeholder="Confirm Password" required aria-label="Confirm Password">
+            </div>
+            <div class="field btn">
+                <input type="submit" value="Signup">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Toggle between forms
+        function showForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+            } else {
+                loginForm.classList.remove('active');
+                signupForm.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
